@@ -83,19 +83,19 @@ Docker is the only thing you need from now on! So let's get started spinning the
 
 **First:** Let's build those images:
 
-- [ ] Build your survey server image and tag it with the name 'survey' by running `docker build -t survey .`
+- [x] Build your survey server image and tag it with the name 'survey' by running `docker build -t survey .`
 
 **REMEMBER the dot is a relative file path to where your Dockerfile lives (one is included for each server), so MAKE SURE you are cd'd into the correct directory before running this command**
 
-- [ ] Build your results server image and tag it with the name 'results' by running `docker build -t results .`
+- [x] Build your results server image and tag it with the name 'results' by running `docker build -t results .`
 
-- [ ] Pull down a MongoDB image by running `docker pull mongo:latest`
+- [x] Pull down a MongoDB image by running `docker pull mongo:latest`
 
 This saves us a lot of time - since we straight up just need a MongoDB database and don't need to configure it in any way we'll just pull the official image from Dockerhub. As with every other time you used the `docker pull` command it grabs the image from Dockerhub and caches it on your machine. This time is no different. However, the way you spin up the official MongoDB image is a little different than we are used to; let's check it out ->
 
 **Second:** Run the containers:
 
-- [ ] First, we'll spin up the MongoDB container. Run `docker run -d --name mongo mongo:latest`
+- [x] First, we'll spin up the MongoDB container. Run `docker run -d --name mongo mongo:latest`
 
 You might be wondering, **'Where's the -p port mapping option that we've used EVERY OTHER TIME?!?!?'**
 
@@ -108,19 +108,19 @@ I NETWORK  [thread1] waiting for connections on port 27017
 ```
 "This image includes `EXPOSE 27017` (the mongo port), so standard container networking will make it automatically available to containers on the same network" -- [Official MongoDB image](https://hub.docker.com/_/mongo/)
 
-- [ ] Next let's spin up the other two server images we made, survey and results
+- [x] Next let's spin up the other two server images we made, survey and results
 
 Be sure to also mount volumes in the respective directories just in case, i don't know, we want to make quick changes to the source code. *cough cough* (we will)
 
-- [ ] cd into '/survey_server' and run:
+- [x] cd into '/survey_server' and run:
 
 `docker run -d -p 8080:8080 -v $(pwd):/src/app --name survey_container survey`
 
-- [ ] cd into '/results_server' and run:
+- [x] cd into '/results_server' and run:
 
 `docker run -d -p 3000:3000 -v $(pwd):/src/app --name results_container results`
 
-- [ ] Now pull up the app by navigating to `localhost:8080` and `localhost:3000` in your browser! You should definitely have your hopes up because I totally didn't give you broken code on purpose!
+- [x] Now pull up the app by navigating to `localhost:8080` and `localhost:3000` in your browser! You should definitely have your hopes up because I totally didn't give you broken code on purpose!
 
 **(Just kidding, I gave you broken code on purpose)**
 
