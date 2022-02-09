@@ -145,7 +145,7 @@ Looks like the survey_container server crashed because it couldn't connect to th
 
 To talk about how to solve this communication problem, I first need to formally introduce Docker Networking. I like to think of Docker Networks as a kind of 'internet' that only docker containers can use. But there's a cool little catch - you can create many isolated networks so that containers connected to a network can all talk to each other but not containers on other networks! This is super useful for controlling the flow of possibly sensitive data between containers.
 
-- [ ] Docker comes installed with 3 ready-to-go networks, to check them out run the command `docker network ls`
+- [x] Docker comes installed with 3 ready-to-go networks, to check them out run the command `docker network ls`
 
 You should see something like this:
 
@@ -162,7 +162,7 @@ You might be wondering, **"Hey, when I spun up all the containers for this modul
 
 But that would be silly. When you spin up a container without specifying a network to connect it to (**Something we will learn how to do in little bit**) it is AUTOMATICALLY connected to the 'bridge' network that comes with Docker by default.
 
-- [ ] Good to know that they're not floating out in space somewhere, but I'd feel better if we had some visual proof of where they are connected. Run `docker network inspect bridge`
+- [x] Good to know that they're not floating out in space somewhere, but I'd feel better if we had some visual proof of where they are connected. Run `docker network inspect bridge`
 
 The `docker network inspect` command gives you an overview of the network whose name you specify in the last argument of the command. In this case we are inspecting the 'bridge' network and you should see something like this logged:
 
@@ -255,19 +255,19 @@ Remember how I said that Docker Networks are kind of like an 'internet' within D
 172.17.0.2
 ```
 
-- [ ] Open up the 'index.js' for both the survey_server and the results_server
+- [x] Open up the 'index.js' for both the survey_server and the results_server
 
-- [ ] On line 8 of both files, change the address string that the server is trying to connect to the database with. Inside the string, change the address 'localhost' to the IPv4Address of the mongo container
+- [x] On line 8 of both files, change the address string that the server is trying to connect to the database with. Inside the string, change the address 'localhost' to the IPv4Address of the mongo container
 
 **This address may be different for you, so make sure you inspect the network on your own machine to find it!**
 
 Because you mounted volumes with the two server containers that you spun up, this change in the source code should be immediately  reflected in the containers (**once you save, of course**).
 
-- [ ] Navigate to `localhost:8080` and `localhost:3000` in separate tabs to check out the app!
+- [x] Navigate to `localhost:8080` and `localhost:3000` in separate tabs to check out the app!
 
-- [ ] Fill out the form provided on `localhost:8080` and hit submit to create an entry. Then at `localhost:3000` refresh the page to show all the entries listed!
+- [x] Fill out the form provided on `localhost:8080` and hit submit to create an entry. Then at `localhost:3000` refresh the page to show all the entries listed!
 
-- [ ] **After you are done with these containers, be sure to remove them (or at least stop them). Nodemon's file watching feature can sometimes take up a chunk of CPU power** Run:
+- [x] **After you are done with these containers, be sure to remove them (or at least stop them). Nodemon's file watching feature can sometimes take up a chunk of CPU power** Run:
 
 `docker rm -f survey_container results_container`
 
